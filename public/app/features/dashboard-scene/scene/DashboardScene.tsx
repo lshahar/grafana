@@ -763,7 +763,6 @@ export class DashboardScene extends SceneObjectBase<DashboardSceneState> {
 
   public replaceWithLibPanelWidget(libPanel: LibraryVizPanel) {
     const gridItem = libPanel.parent;
-    console.log(libPanel);
 
     if (!(gridItem instanceof DashboardGridItem)) {
       return;
