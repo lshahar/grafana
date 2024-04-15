@@ -29,6 +29,7 @@ import { dashboardSceneGraph } from '../utils/dashboardSceneGraph';
 import { djb2Hash } from '../utils/djb2Hash';
 import { findVizPanelByKey } from '../utils/utils';
 
+import { AddLibraryPanelWidget } from './AddLibraryPanelWidget';
 import { DashboardControls } from './DashboardControls';
 import { DashboardGridItem } from './DashboardGridItem';
 import { DashboardScene, DashboardSceneState } from './DashboardScene';
@@ -874,6 +875,39 @@ describe('DashboardScene', () => {
 
         expect(body.state.children.length).toBe(1);
         expect(gridItem.state.body).toBeInstanceOf(VizPanel);
+      });
+
+      it('Should replace a library panel with an import widget', () => {
+        const libPanel = new LibraryVizPanel({
+          title: 'title',
+          uid: 'abc',
+          name: 'lib panel',
+          panelKey: 'panel-1',
+          isLoaded: true,
+          panel: new VizPanel({
+            title: 'Panel B',
+            pluginId: 'table',
+          }),
+        });
+
+        const scene = buildTestScene({
+          body: new SceneGridLayout({
+            children: [
+              new DashboardGridItem({
+                key: 'griditem-2',
+                body: libPanel,
+              }),
+            ],
+          }),
+        });
+
+        scene.replaceWithLibPanelWidget(libPanel);
+
+        const body = scene.state.body as SceneGridLayout;
+        const gridItem = body.state.children[0] as DashboardGridItem;
+
+        expect(body.state.children.length).toBe(1);
+        expect(gridItem.state.body).toBeInstanceOf(AddLibraryPanelWidget);
       });
     });
   });

@@ -761,6 +761,19 @@ export class DashboardScene extends SceneObjectBase<DashboardSceneState> {
     locationService.partial({ editview: 'settings' });
   };
 
+  public replaceWithLibPanelWidget(libPanel: LibraryVizPanel) {
+    const gridItem = libPanel.parent;
+    console.log(libPanel);
+
+    if (!(gridItem instanceof DashboardGridItem)) {
+      return;
+    }
+
+    gridItem.setState({
+      body: new AddLibraryPanelWidget({ key: libPanel.state.panelKey! }),
+    });
+  }
+
   public onCreateLibPanelWidget() {
     if (!(this.state.body instanceof SceneGridLayout)) {
       throw new Error('Trying to add a panel in a layout that is not SceneGridLayout');

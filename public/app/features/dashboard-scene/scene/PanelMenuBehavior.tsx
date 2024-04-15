@@ -122,6 +122,14 @@ export function panelMenuBehavior(menu: VizPanelMenu, isRepeat = false) {
             );
           },
         });
+
+        moreSubMenu.push({
+          text: t('panel.header-menu.replace-library-panel', `Replace library panel`),
+          onClick: () => {
+            DashboardInteractions.panelMenuItemClicked('replaceLibraryPanel');
+            dashboard.replaceWithLibPanelWidget(parent);
+          },
+        });
       } else {
         moreSubMenu.push({
           text: t('panel.header-menu.create-library-panel', `Create library panel`),
