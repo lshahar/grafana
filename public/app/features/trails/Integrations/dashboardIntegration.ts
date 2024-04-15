@@ -5,7 +5,8 @@ import { getDataSourceSrv } from '@grafana/runtime';
 import { SceneTimeRangeLike, VizPanel } from '@grafana/scenes';
 import { DataSourceRef } from '@grafana/schema';
 
-import { DashboardModel } from '../../dashboard/state';
+// @todo: replace barrel import path
+import { DashboardModel } from '../../dashboard/state/index';
 import { DashboardScene } from '../../dashboard-scene/scene/DashboardScene';
 import { MetricScene } from '../MetricScene';
 

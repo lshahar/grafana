@@ -11,7 +11,8 @@ import { useDispatch } from 'app/types';
 import { ShowModalReactEvent } from 'app/types/events';
 
 import { useDeleteItemsMutation, useMoveItemsMutation } from '../../api/browseDashboardsAPI';
-import { setAllSelection, useActionSelectionState } from '../../state';
+// @todo: replace barrel import path
+import { setAllSelection, useActionSelectionState } from '../../state/index';
 import { DashboardTreeSelection } from '../../types';
 
 import { DeleteModal } from './DeleteModal';

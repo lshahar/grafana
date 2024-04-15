@@ -8,13 +8,14 @@ import { Alert, Button, CodeEditor, Space } from '@grafana/ui';
 
 import AzureMonitorDatasource from '../../datasource';
 import { selectors } from '../../e2e/selectors';
+// @todo: replace barrel import path
 import {
   AzureDataSourceJsonData,
   AzureMonitorErrorish,
   AzureMonitorOption,
   AzureMonitorQuery,
   AzureQueryType,
-} from '../../types';
+} from '../../types/index';
 import useLastError from '../../utils/useLastError';
 import ArgQueryEditor from '../ArgQueryEditor';
 import LogsQueryEditor from '../LogsQueryEditor';

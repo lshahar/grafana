@@ -3,7 +3,8 @@ import React from 'react';
 import { Box, Button, ModalsController, Text } from '@grafana/ui';
 import { t, Trans } from 'app/core/internationalization';
 
-import { useCreateCloudMigrationTokenMutation } from '../../api';
+// @todo: replace barrel import path
+import { useCreateCloudMigrationTokenMutation } from '../../api/index';
 import { InfoItem } from '../../shared/InfoItem';
 import { TokenErrorAlert } from '../TokenErrorAlert';
 

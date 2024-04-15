@@ -14,7 +14,8 @@ import { config } from '@grafana/runtime';
 import { getBackendSrv } from '@grafana/runtime/src';
 import { InlineField, Input, Select, Switch, useTheme2 } from '@grafana/ui';
 
-import { useUpdateDatasource } from '../../../../features/datasources/state';
+// @todo: replace barrel import path
+import { useUpdateDatasource } from '../../../../features/datasources/state/index';
 import { SUGGESTIONS_LIMIT } from '../language_provider';
 import { QueryEditorMode } from '../querybuilder/shared/types';
 import { defaultPrometheusQueryOverlapWindow } from '../querycache/QueryCache';

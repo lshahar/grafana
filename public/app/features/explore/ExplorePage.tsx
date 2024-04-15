@@ -20,7 +20,8 @@ import RichHistoryContainer from './RichHistory/RichHistoryContainer';
 import { useExplorePageTitle } from './hooks/useExplorePageTitle';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { useSplitSizeUpdater } from './hooks/useSplitSizeUpdater';
-import { useStateSync } from './hooks/useStateSync';
+// @todo: replace barrel import path
+import { useStateSync } from './hooks/useStateSync/index';
 import { useTimeSrvFix } from './hooks/useTimeSrvFix';
 import { changeShowQueryHistory } from './state/main';
 import { isSplit, selectCorrelationDetails, selectPanesEntries, selectShowQueryHistory } from './state/selectors';

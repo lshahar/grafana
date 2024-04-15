@@ -10,8 +10,9 @@ import { DashboardMeta, DashboardRoutes } from 'app/types';
 
 import { getRouteComponentProps } from '../../../core/navigation/__mocks__/routeProps';
 import { Props as DashboardPanelProps } from '../dashgrid/DashboardPanel';
-import { DashboardModel } from '../state';
+// @todo: replace barrel import path
 import { createDashboardModelFixture } from '../state/__fixtures__/dashboardFixtures';
+import { DashboardModel } from '../state/index';
 
 import { Props, SoloPanelPage } from './SoloPanelPage';
 

@@ -8,7 +8,8 @@ import { getMockDataSources } from 'app/features/datasources/__mocks__';
 import * as api from 'app/features/datasources/api';
 import { configureStore } from 'app/store/configureStore';
 
-import { getPluginsStateMock } from '../plugins/admin/__mocks__';
+// @todo: replace barrel import path
+import { getPluginsStateMock } from '../plugins/admin/__mocks__/index';
 
 import Connections from './Connections';
 import { navIndex } from './__mocks__/store.navIndex.mock';

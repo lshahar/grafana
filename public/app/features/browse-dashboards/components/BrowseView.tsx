@@ -6,6 +6,7 @@ import { DashboardViewItem } from 'app/features/search/types';
 import { useDispatch } from 'app/types';
 
 import { PAGE_SIZE } from '../api/services';
+// @todo: replace barrel import path
 import {
   useFlatTreeState,
   useCheckboxSelectionState,
@@ -16,7 +17,7 @@ import {
   useBrowseLoadingStatus,
   useLoadNextChildrenPage,
   fetchNextChildrenPage,
-} from '../state';
+} from '../state/index';
 import { BrowseDashboardsState, DashboardTreeSelection, SelectionState } from '../types';
 
 import { DashboardsTree } from './DashboardsTree';

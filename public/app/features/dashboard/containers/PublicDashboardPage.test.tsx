@@ -19,7 +19,8 @@ import { DashboardInitPhase, DashboardMeta, DashboardRoutes } from 'app/types';
 import { SafeDynamicImport } from '../../../core/components/DynamicImports/SafeDynamicImport';
 import { configureStore } from '../../../store/configureStore';
 import { Props as LazyLoaderProps } from '../dashgrid/LazyLoader';
-import { DashboardModel } from '../state';
+// @todo: replace barrel import path
+import { DashboardModel } from '../state/index';
 import { initDashboard } from '../state/initDashboard';
 
 import PublicDashboardPage, { Props } from './PublicDashboardPage';

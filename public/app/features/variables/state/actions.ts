@@ -31,7 +31,8 @@ import { createErrorNotification } from '../../../core/copy/appNotification';
 import { appEvents } from '../../../core/core';
 import { getBackendSrv } from '../../../core/services/backend_srv';
 import { Graph, Node } from '../../../core/utils/dag';
-import { AppNotification, StoreState, ThunkResult } from '../../../types';
+// @todo: replace barrel import path
+import { AppNotification, StoreState, ThunkResult } from '../../../types/index';
 import { getDatasourceSrv } from '../../plugins/datasource_srv';
 import { getTemplateSrv, TemplateSrv } from '../../templating/template_srv';
 import { variableAdapters } from '../adapters';

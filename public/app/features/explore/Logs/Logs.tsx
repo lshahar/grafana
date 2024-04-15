@@ -49,11 +49,13 @@ import { InfiniteScroll } from 'app/features/logs/components/InfiniteScroll';
 import { getLogLevelFromKey } from 'app/features/logs/utils';
 import { dispatch, getState } from 'app/store/store';
 
-import { ExploreItemState } from '../../../types';
+// @todo: replace barrel import path
+import { ExploreItemState } from '../../../types/index';
 import { LogRows } from '../../logs/components/LogRows';
 import { LogRowContextModal } from '../../logs/components/log-context/LogRowContextModal';
 import { dedupLogRows, filterLogLevels } from '../../logs/logsModel';
-import { getUrlStateFromPaneState } from '../hooks/useStateSync';
+// @todo: replace barrel import path
+import { getUrlStateFromPaneState } from '../hooks/useStateSync/index';
 import { changePanelState } from '../state/explorePane';
 
 import { LogsFeedback } from './LogsFeedback';

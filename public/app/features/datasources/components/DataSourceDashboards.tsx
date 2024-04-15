@@ -6,7 +6,8 @@ import { loadPluginDashboards } from 'app/features/plugins/admin/state/actions';
 import { PluginDashboard, StoreState, useDispatch, useSelector } from 'app/types';
 
 import DashboardTable from '../components/DashboardsTable';
-import { useInitDataSourceSettings } from '../state';
+// @todo: replace barrel import path
+import { useInitDataSourceSettings } from '../state/index';
 
 export type Props = {
   // The UID of the data source

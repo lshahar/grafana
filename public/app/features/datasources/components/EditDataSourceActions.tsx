@@ -5,7 +5,8 @@ import { LinkButton } from '@grafana/ui';
 import { contextSrv } from 'app/core/core';
 import { AccessControlAction } from 'app/types';
 
-import { useDataSource } from '../state';
+// @todo: replace barrel import path
+import { useDataSource } from '../state/index';
 import { trackCreateDashboardClicked, trackDsConfigClicked, trackExploreClicked } from '../tracking';
 import { constructDataSourceExploreUrl } from '../utils';
 

@@ -20,7 +20,8 @@ import {
   SaveDashboardResponseDTO,
 } from 'app/types';
 
-import { refetchChildren, refreshParents } from '../state';
+// @todo: replace barrel import path
+import { refetchChildren, refreshParents } from '../state/index';
 import { DashboardTreeSelection } from '../types';
 
 import { PAGE_SIZE } from './services';

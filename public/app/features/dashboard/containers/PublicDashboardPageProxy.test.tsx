@@ -9,7 +9,8 @@ import { config, locationService } from '@grafana/runtime';
 import { GrafanaContext } from 'app/core/context/GrafanaContext';
 import { configureStore } from 'app/store/configureStore';
 
-import { DashboardRoutes } from '../../../types';
+// @todo: replace barrel import path
+import { DashboardRoutes } from '../../../types/index';
 
 import PublicDashboardPageProxy, { PublicDashboardPageProxyProps } from './PublicDashboardPageProxy';
 

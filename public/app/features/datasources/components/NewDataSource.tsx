@@ -9,13 +9,14 @@ import { DataSourcePluginCategory, StoreState, useDispatch, useSelector } from '
 
 import { DataSourceCategories } from '../components/DataSourceCategories';
 import { DataSourceTypeCardList } from '../components/DataSourceTypeCardList';
+// @todo: replace barrel import path
 import {
   useAddDatasource,
   useLoadDataSourcePlugins,
   getFilteredDataSourcePlugins,
   setDataSourceTypeSearchQuery,
   useDataSourcesRoutes,
-} from '../state';
+} from '../state/index';
 
 export function NewDataSource() {
   useLoadDataSourcePlugins();

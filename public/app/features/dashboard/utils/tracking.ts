@@ -1,6 +1,7 @@
 import { DashboardInteractions } from 'app/features/dashboard-scene/utils/interactions';
 
-import { DashboardModel } from '../state';
+// @todo: replace barrel import path
+import { DashboardModel } from '../state/index';
 
 export function trackDashboardLoaded(dashboard: DashboardModel, duration: number, versionBeforeMigration?: number) {
   // Count the different types of variables

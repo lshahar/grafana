@@ -8,7 +8,8 @@ import { changePanelPlugin } from 'app/features/panel/state/actions';
 import { getPanelStateForModel } from 'app/features/panel/state/selectors';
 import { StoreState } from 'app/types';
 
-import { PanelModel, DashboardModel } from '../../state';
+// @todo: replace barrel import path
+import { PanelModel, DashboardModel } from '../../state/index';
 
 import { getSectionOpenState, saveSectionOpenState } from './state/utils';
 

@@ -14,7 +14,8 @@ import {
   MetricQueryType,
   MetricStat,
 } from '../../../types';
-import { MetricStatEditor } from '../../shared/MetricStatEditor';
+// @todo: replace barrel import path
+import { MetricStatEditor } from '../../shared/MetricStatEditor/index';
 
 import { DynamicLabelsField } from './DynamicLabelsField';
 import { MathExpressionQueryField } from './MathExpressionQueryField';
@@ -111,7 +112,6 @@ export const MetricsQueryEditor = (props: Props) => {
   return (
     <>
       <Space v={0.5} />
-
       {query.metricQueryType === MetricQueryType.Search && (
         <>
           {query.metricEditorMode === MetricEditorMode.Builder && (

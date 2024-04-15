@@ -6,7 +6,8 @@ import { Button, Field, Input, Modal } from '@grafana/ui';
 import { OldFolderPicker } from 'app/core/components/Select/OldFolderPicker';
 import { t, Trans } from 'app/core/internationalization';
 
-import { PanelModel } from '../../../dashboard/state';
+// @todo: replace barrel import path
+import { PanelModel } from '../../../dashboard/state/index';
 import { getLibraryPanelByName } from '../../state/api';
 import { LibraryElementDTO } from '../../types';
 import { usePanelSave } from '../../utils/usePanelSave';

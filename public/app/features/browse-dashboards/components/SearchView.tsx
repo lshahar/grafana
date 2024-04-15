@@ -9,7 +9,8 @@ import { useSearchStateManager } from 'app/features/search/state/SearchStateMana
 import { DashboardViewItemKind } from 'app/features/search/types';
 import { useDispatch, useSelector } from 'app/types';
 
-import { setAllSelection, setItemSelectionState, useHasSelection } from '../state';
+// @todo: replace barrel import path
+import { setAllSelection, setItemSelectionState, useHasSelection } from '../state/index';
 
 interface SearchViewProps {
   height: number;

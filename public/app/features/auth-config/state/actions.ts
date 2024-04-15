@@ -4,7 +4,8 @@ import { config, getBackendSrv, isFetchError } from '@grafana/runtime';
 import { contextSrv } from 'app/core/core';
 import { AccessControlAction, Settings, ThunkResult, UpdateSettingsQuery } from 'app/types';
 
-import { getAuthProviderStatus, getRegisteredAuthProviders, SSOProvider } from '..';
+// @todo: replace barrel import path
+import { getAuthProviderStatus, getRegisteredAuthProviders, SSOProvider } from '../index';
 import { AuthProviderStatus, SettingsError } from '../types';
 
 import {

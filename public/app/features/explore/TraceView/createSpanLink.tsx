@@ -29,7 +29,8 @@ import { PromQuery } from 'app/plugins/datasource/prometheus/types';
 import { LokiQuery } from '../../../plugins/datasource/loki/types';
 import { ExploreFieldLinkModel, getFieldLinksForExplore, getVariableUsageInfo } from '../utils/links';
 
-import { SpanLinkDef, SpanLinkFunc, Trace, TraceSpan } from './components';
+// @todo: replace barrel import path
+import { SpanLinkDef, SpanLinkFunc, Trace, TraceSpan } from './components/index';
 import { SpanLinkType } from './components/types/links';
 
 /**

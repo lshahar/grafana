@@ -6,7 +6,8 @@ import { appEvents } from 'app/core/core';
 import { getBackendSrv } from 'app/core/services/backend_srv';
 import { ThunkResult, ThunkDispatch } from 'app/types';
 
-import { getMockDataSource } from '../__mocks__';
+// @todo: replace barrel import path
+import { getMockDataSource } from '../__mocks__/index';
 import * as api from '../api';
 import { DATASOURCES_ROUTES } from '../constants';
 import { trackDataSourceCreated, trackDataSourceTested } from '../tracking';

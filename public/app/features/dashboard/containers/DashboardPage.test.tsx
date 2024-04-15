@@ -23,8 +23,9 @@ import { DashboardInitPhase, DashboardMeta, DashboardRoutes } from 'app/types';
 import { configureStore } from '../../../store/configureStore';
 import { Props as LazyLoaderProps } from '../dashgrid/LazyLoader';
 import { DashboardSrv, setDashboardSrv } from '../services/DashboardSrv';
-import { DashboardModel } from '../state';
+// @todo: replace barrel import path
 import { createDashboardModelFixture } from '../state/__fixtures__/dashboardFixtures';
+import { DashboardModel } from '../state/index';
 
 import { Props, UnthemedDashboardPage } from './DashboardPage';
 

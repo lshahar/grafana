@@ -5,7 +5,8 @@ import { queryResultToViewItem } from 'app/features/search/service/utils';
 import { DashboardViewItem } from 'app/features/search/types';
 
 import { contextSrv } from '../../../core/core';
-import { AccessControlAction } from '../../../types';
+// @todo: replace barrel import path
+import { AccessControlAction } from '../../../types/index';
 import { isSharedWithMe } from '../components/utils';
 
 export const PAGE_SIZE = 50;

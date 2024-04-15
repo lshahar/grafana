@@ -25,6 +25,10 @@ import { useDispatch, useSelector } from 'app/types';
 
 import { changePanelState } from '../state/explorePane';
 
+// @todo: replace barrel import path
+import memoizedTraceCriticalPath from './components/CriticalPath';
+import SpanGraph from './components/TracePageHeader/SpanGraph';
+import { TraceFlameGraphs } from './components/TraceTimelineViewer/SpanDetail';
 import {
   SpanBarOptionsData,
   SpanLinkFunc,
@@ -32,10 +36,7 @@ import {
   TracePageHeader,
   TraceTimelineViewer,
   TTraceTimeline,
-} from './components';
-import memoizedTraceCriticalPath from './components/CriticalPath';
-import SpanGraph from './components/TracePageHeader/SpanGraph';
-import { TraceFlameGraphs } from './components/TraceTimelineViewer/SpanDetail';
+} from './components/index';
 import { createSpanLinkFactory } from './createSpanLink';
 import { useChildrenState } from './useChildrenState';
 import { useDetailState } from './useDetailState';

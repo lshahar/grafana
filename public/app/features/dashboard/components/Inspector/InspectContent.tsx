@@ -23,7 +23,8 @@ import { QueryInspector } from 'app/features/inspector/QueryInspector';
 import { InspectTab } from 'app/features/inspector/types';
 
 import { GetDataOptions } from '../../../query/state/PanelQueryRunner';
-import { DashboardModel, PanelModel } from '../../state';
+// @todo: replace barrel import path
+import { DashboardModel, PanelModel } from '../../state/index';
 
 interface Props {
   dashboard: DashboardModel;

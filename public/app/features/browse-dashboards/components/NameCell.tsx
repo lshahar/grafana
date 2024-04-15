@@ -10,7 +10,8 @@ import { t } from 'app/core/internationalization';
 import { getIconForItem } from 'app/features/search/service/utils';
 
 import { Indent } from '../../../core/components/Indent/Indent';
-import { useChildrenByParentUIDState } from '../state';
+// @todo: replace barrel import path
+import { useChildrenByParentUIDState } from '../state/index';
 import { DashboardsTreeCellProps } from '../types';
 
 import { makeRowID } from './utils';

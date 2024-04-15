@@ -5,7 +5,8 @@ import { StoreState } from 'app/types';
 
 import { initPanelState } from '../../panel/state/actions';
 import { setPanelInstanceState } from '../../panel/state/reducers';
-import { DashboardModel, PanelModel } from '../state';
+// @todo: replace barrel import path
+import { DashboardModel, PanelModel } from '../state/index';
 
 import { LazyLoader } from './LazyLoader';
 import { PanelChromeAngular } from './PanelChromeAngular';

@@ -29,7 +29,8 @@ import { DashboardInteractions } from 'app/features/dashboard-scene/utils/intera
 import { DeletePublicDashboardModal } from 'app/features/manage-dashboards/components/PublicDashboardListTable/DeletePublicDashboardModal';
 
 import { contextSrv } from '../../../../../../core/services/context_srv';
-import { AccessControlAction, useSelector } from '../../../../../../types';
+// @todo: replace barrel import path
+import { AccessControlAction, useSelector } from '../../../../../../types/index';
 import { useIsDesktop } from '../../../../utils/screen';
 import { ShareModal } from '../../ShareModal';
 import { shareDashboardType } from '../../utils';

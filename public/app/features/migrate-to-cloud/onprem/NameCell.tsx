@@ -8,7 +8,8 @@ import { CellProps, Stack, Text, Icon, useStyles2 } from '@grafana/ui';
 import { getSvgSize } from '@grafana/ui/src/components/Icon/utils';
 import { Trans } from 'app/core/internationalization';
 
-import { useGetDashboardByUidQuery, MigrateDataResponseItemDto } from '../api';
+// @todo: replace barrel import path
+import { useGetDashboardByUidQuery, MigrateDataResponseItemDto } from '../api/index';
 
 export function NameCell(props: CellProps<MigrateDataResponseItemDto>) {
   const data = props.row.original;

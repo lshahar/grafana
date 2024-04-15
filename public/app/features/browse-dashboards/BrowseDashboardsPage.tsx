@@ -21,7 +21,8 @@ import CreateNewButton from './components/CreateNewButton';
 import { FolderActionsButton } from './components/FolderActionsButton';
 import { SearchView } from './components/SearchView';
 import { getFolderPermissions } from './permissions';
-import { setAllSelection, useHasSelection } from './state';
+// @todo: replace barrel import path
+import { setAllSelection, useHasSelection } from './state/index';
 
 export interface BrowseDashboardsPageRouteParams {
   uid?: string;

@@ -8,7 +8,8 @@ import { PanelModel } from 'app/features/dashboard/state';
 import { reducerTester } from '../../../../test/core/redux/reducerTester';
 import { MockDataSourceApi } from '../../../../test/mocks/datasource_srv';
 import { configureStore } from '../../../store/configureStore';
-import { ExploreItemState, ExploreState, StoreState, ThunkDispatch } from '../../../types';
+// @todo: replace barrel import path
+import { ExploreItemState, ExploreState, StoreState, ThunkDispatch } from '../../../types/index';
 
 import { exploreReducer, navigateToExplore, splitClose, splitOpen } from './main';
 

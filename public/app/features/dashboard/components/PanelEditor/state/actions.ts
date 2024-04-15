@@ -6,7 +6,8 @@ import { cleanUpPanelState } from 'app/features/panel/state/actions';
 import { panelModelAndPluginReady } from 'app/features/panel/state/reducers';
 import { ThunkResult } from 'app/types';
 
-import { DashboardModel, PanelModel } from '../../../state';
+// @todo: replace barrel import path
+import { DashboardModel, PanelModel } from '../../../state/index';
 
 import {
   closeEditor,

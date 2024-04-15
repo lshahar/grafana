@@ -76,7 +76,6 @@ export const QueryOperationRowHeader = ({
         )}
         {headerElement}
       </div>
-
       <Stack gap={1} alignItems="center">
         {actionsElement}
         {draggable && (

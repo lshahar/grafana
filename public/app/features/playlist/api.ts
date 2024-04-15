@@ -10,7 +10,8 @@ import { dispatch } from 'app/store/store';
 
 import { ScopedResourceServer } from '../apiserver/server';
 import { Resource, ResourceForCreate, ResourceServer } from '../apiserver/types';
-import { DashboardQueryResult, getGrafanaSearcher, SearchQuery } from '../search/service';
+// @todo: replace barrel import path
+import { DashboardQueryResult, getGrafanaSearcher, SearchQuery } from '../search/service/index';
 
 import { Playlist, PlaylistItem, PlaylistAPI } from './types';
 

@@ -11,7 +11,8 @@ import { CorrelationEditorDetailsUpdate, ExploreItemState, ExploreState } from '
 
 import { RichHistoryResults } from '../../../core/history/RichHistoryStorage';
 import { RichHistorySearchFilters, RichHistorySettings } from '../../../core/utils/richHistoryTypes';
-import { createAsyncThunk, ThunkResult } from '../../../types';
+// @todo: replace barrel import path
+import { createAsyncThunk, ThunkResult } from '../../../types/index';
 import { withUniqueRefIds } from '../utils/queries';
 
 import { initializeExplore, InitializeExploreOptions, paneReducer } from './explorePane';

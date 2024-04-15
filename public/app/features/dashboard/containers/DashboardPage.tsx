@@ -25,14 +25,17 @@ import { PanelEditEnteredEvent, PanelEditExitedEvent } from 'app/types/events';
 import { cancelVariables, templateVarsChangedInUrl } from '../../variables/state/actions';
 import { findTemplateVarChanges } from '../../variables/utils';
 import { AddWidgetModal } from '../components/AddWidgetModal/AddWidgetModal';
-import { DashNav } from '../components/DashNav';
+// @todo: replace barrel import path
+import { DashNav } from '../components/DashNav/index';
 import { DashboardFailed } from '../components/DashboardLoading/DashboardFailed';
 import { DashboardLoading } from '../components/DashboardLoading/DashboardLoading';
 import { DashboardPrompt } from '../components/DashboardPrompt/DashboardPrompt';
-import { DashboardSettings } from '../components/DashboardSettings';
+// @todo: replace barrel import path
+import { DashboardSettings } from '../components/DashboardSettings/index';
 import { PanelInspector } from '../components/Inspector/PanelInspector';
 import { PanelEditor } from '../components/PanelEditor/PanelEditor';
-import { ShareModal } from '../components/ShareModal';
+// @todo: replace barrel import path
+import { ShareModal } from '../components/ShareModal/index';
 import { SubMenu } from '../components/SubMenu/SubMenu';
 import { DashboardGrid } from '../dashgrid/DashboardGrid';
 import { liveTimer } from '../dashgrid/liveTimer';

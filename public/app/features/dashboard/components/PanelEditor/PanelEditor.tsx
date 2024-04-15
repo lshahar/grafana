@@ -32,12 +32,14 @@ import { updateTimeZoneForSession } from 'app/features/profile/state/reducers';
 import { StoreState } from 'app/types';
 import { PanelOptionsChangedEvent, ShowModalReactEvent } from 'app/types/events';
 
-import { notifyApp } from '../../../../core/actions';
+// @todo: replace barrel import path
+import { notifyApp } from '../../../../core/actions/index';
 import { UnlinkModal } from '../../../dashboard-scene/scene/UnlinkModal';
 import { isPanelModelLibraryPanel } from '../../../library-panels/guard';
 import { getVariablesByKey } from '../../../variables/state/selectors';
 import { DashboardPanel } from '../../dashgrid/DashboardPanel';
-import { DashboardModel, PanelModel } from '../../state';
+// @todo: replace barrel import path
+import { DashboardModel, PanelModel } from '../../state/index';
 import { DashNavTimeControls } from '../DashNav/DashNavTimeControls';
 import { SaveDashboardDrawer } from '../SaveDashboard/SaveDashboardDrawer';
 

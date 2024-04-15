@@ -9,12 +9,13 @@ import CloudMonitoringDatasource from '../datasource';
 import { CloudMonitoringQuery, PromQLQuery, QueryType, SLOQuery } from '../types/query';
 import { CloudMonitoringOptions } from '../types/types';
 
+import { MetricQueryEditor, SLOQueryEditor } from './/index';
 import { defaultTimeSeriesList, defaultTimeSeriesQuery } from './MetricQueryEditor';
 import { PromQLQueryEditor } from './PromQLEditor';
 import { QueryHeader } from './QueryHeader';
 import { defaultQuery as defaultSLOQuery } from './SLOQueryEditor';
 
-import { MetricQueryEditor, SLOQueryEditor } from './';
+// @todo: replace barrel import path
 
 export type Props = QueryEditorProps<CloudMonitoringDatasource, CloudMonitoringQuery, CloudMonitoringOptions>;
 

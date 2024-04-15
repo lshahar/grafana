@@ -6,7 +6,8 @@ import { GrafanaTheme2 } from '@grafana/data';
 import { Modal, Button, Stack, TextLink, Field, Input, Text, useStyles2, Alert } from '@grafana/ui';
 import { Trans, t } from 'app/core/internationalization';
 
-import { CreateMigrationApiArg } from '../../../api';
+// @todo: replace barrel import path
+import { CreateMigrationApiArg } from '../../../api/index';
 
 interface Props {
   isOpen: boolean;

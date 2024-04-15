@@ -17,8 +17,9 @@ import * as actions from 'app/features/explore/state/main';
 import { setStore } from 'app/store/store';
 import { AccessControlAction } from 'app/types';
 
-import { PanelModel } from '../state';
+// @todo: replace barrel import path
 import { createDashboardModelFixture } from '../state/__fixtures__/dashboardFixtures';
+import { PanelModel } from '../state/index';
 
 import { getPanelMenu } from './getPanelMenu';
 

@@ -8,7 +8,8 @@ import { DashboardPicker } from 'app/core/components/Select/DashboardPicker';
 import { TagFilter } from 'app/core/components/TagFilter/TagFilter';
 import { Trans, t } from 'app/core/internationalization';
 
-import { getGrafanaSearcher } from '../search/service';
+// @todo: replace barrel import path
+import { getGrafanaSearcher } from '../search/service/index';
 
 import { PlaylistTable } from './PlaylistTable';
 import { Playlist } from './types';

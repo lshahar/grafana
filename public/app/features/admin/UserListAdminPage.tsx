@@ -9,7 +9,8 @@ import { Page } from 'app/core/components/Page/Page';
 import { contextSrv } from 'app/core/core';
 import { t } from 'app/core/internationalization';
 
-import { AccessControlAction, StoreState, UserFilter } from '../../types';
+// @todo: replace barrel import path
+import { AccessControlAction, StoreState, UserFilter } from '../../types/index';
 
 import { UsersTable } from './Users/UsersTable';
 import { changeFilter, changePage, changeQuery, changeSort, fetchUsers } from './state/actions';

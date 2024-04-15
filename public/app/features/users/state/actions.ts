@@ -6,7 +6,8 @@ import { contextSrv } from 'app/core/core';
 import { accessControlQueryParam } from 'app/core/utils/accessControl';
 import { OrgUser } from 'app/types';
 
-import { AccessControlAction, ThunkResult } from '../../../types';
+// @todo: replace barrel import path
+import { AccessControlAction, ThunkResult } from '../../../types/index';
 
 import {
   usersLoaded,

@@ -17,7 +17,8 @@ import { t } from 'app/core/internationalization';
 import { PluginIconName } from 'app/features/plugins/admin/types';
 import { ShowModalReactEvent } from 'app/types/events';
 
-import { QueryResponse, SearchResultMeta } from '../../service';
+// @todo: replace barrel import path
+import { QueryResponse, SearchResultMeta } from '../../service/index';
 import { getIconForKind } from '../../service/utils';
 import { SelectionChecker, SelectionToggle } from '../selection';
 

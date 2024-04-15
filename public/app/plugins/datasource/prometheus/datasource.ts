@@ -184,8 +184,7 @@ export class PrometheusDatasource
       // All versions of Mimir support matchers for labels API
       this._isDatasourceVersionGreaterOrEqualTo('2.0.0', PromApplication.Mimir) ||
       // https://github.com/cortexproject/cortex/discussions/4542
-      this._isDatasourceVersionGreaterOrEqualTo('1.11.0', PromApplication.Cortex) ||
-      // https://github.com/thanos-io/thanos/pull/3566
+      this._isDatasourceVersionGreaterOrEqualTo('1.11.0', PromApplication.Cortex) || // https://github.com/thanos-io/thanos/pull/3566
       //https://github.com/thanos-io/thanos/releases/tag/v0.18.0
       this._isDatasourceVersionGreaterOrEqualTo('0.18.0', PromApplication.Thanos)
     );

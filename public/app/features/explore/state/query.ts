@@ -53,7 +53,8 @@ import {
 } from 'app/types';
 import { ExploreState, QueryOptions, SupplementaryQueries } from 'app/types/explore';
 
-import { notifyApp } from '../../../core/actions';
+// @todo: replace barrel import path
+import { notifyApp } from '../../../core/actions/index';
 import { createErrorNotification } from '../../../core/copy/appNotification';
 import { runRequest } from '../../query/state/runRequest';
 import { visualisationTypeKey } from '../Logs/utils/logs';

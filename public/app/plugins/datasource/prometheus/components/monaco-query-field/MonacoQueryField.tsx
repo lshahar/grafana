@@ -16,8 +16,9 @@ import {
 
 import { Props } from './MonacoQueryFieldProps';
 import { getOverrideServices } from './getOverrideServices';
-import { getCompletionProvider, getSuggestOptions } from './monaco-completion-provider';
+// @todo: replace barrel import path
 import { DataProvider } from './monaco-completion-provider/data_provider';
+import { getCompletionProvider, getSuggestOptions } from './monaco-completion-provider/index';
 
 const options: monacoTypes.editor.IStandaloneEditorConstructionOptions = {
   codeLens: false,

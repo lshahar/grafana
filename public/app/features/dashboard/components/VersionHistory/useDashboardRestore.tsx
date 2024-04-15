@@ -8,7 +8,8 @@ import { historySrv } from 'app/features/dashboard-scene/settings/version-histor
 import { useSelector } from 'app/types';
 
 import { dashboardWatcher } from '../../../live/dashboard/dashboardWatcher';
-import { DashboardModel } from '../../state';
+// @todo: replace barrel import path
+import { DashboardModel } from '../../state/index';
 
 const restoreDashboard = async (version: number, dashboard: DashboardModel) => {
   // Skip the watcher logic for this save since it's handled by the hook

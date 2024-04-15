@@ -10,7 +10,8 @@ import { contextSrv } from 'app/core/core';
 import { t } from 'app/core/internationalization';
 import { StoreState, AccessControlAction, useSelector } from 'app/types';
 
-import { getDataSources, getDataSourcesCount, useDataSourcesRoutes, useLoadDataSources } from '../state';
+// @todo: replace barrel import path
+import { getDataSources, getDataSourcesCount, useDataSourcesRoutes, useLoadDataSources } from '../state/index';
 import { trackDataSourcesListViewed } from '../tracking';
 
 import { DataSourcesListCard } from './DataSourcesListCard';

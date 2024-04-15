@@ -15,8 +15,9 @@ import { VariablesChanged } from 'app/features/variables/types';
 import { configureStore } from 'app/store/configureStore';
 import { DashboardMeta } from 'app/types';
 
-import { DashboardModel } from '../state';
+// @todo: replace barrel import path
 import { createDashboardModelFixture } from '../state/__fixtures__/dashboardFixtures';
+import { DashboardModel } from '../state/index';
 
 import { DashboardGrid, PANEL_FILTER_VARIABLE, Props } from './DashboardGrid';
 import { Props as LazyLoaderProps } from './LazyLoader';

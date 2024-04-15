@@ -6,7 +6,8 @@ import { config } from '@grafana/runtime';
 import { HorizontalGroup, Icon, useStyles2, VerticalGroup } from '@grafana/ui';
 import configCore from 'app/core/config';
 
-import { GetStartedWithPlugin } from '../components/GetStartedWithPlugin';
+// @todo: replace barrel import path
+import { GetStartedWithPlugin } from '../components/GetStartedWithPlugin/index';
 import { InstallControlsButton } from '../components/InstallControls';
 import { ExternallyManagedButton } from '../components/InstallControls/ExternallyManagedButton';
 import { getLatestCompatibleVersion, hasInstallControlWarning, isInstallControlsEnabled } from '../helpers';
