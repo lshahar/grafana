@@ -39,6 +39,14 @@ export type AppPluginConfig = {
   version: string;
   preload: boolean;
   angular: AngularMeta;
+  extensions: AppPluginExtension[];
+};
+
+export type AppPluginExtension = {
+  extensionPointId: string;
+  title: string;
+  description: string;
+  type: string;
 };
 
 export class GrafanaBootConfig implements GrafanaConfig {

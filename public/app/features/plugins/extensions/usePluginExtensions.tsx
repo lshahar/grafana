@@ -1,13 +1,16 @@
 import { useObservable } from 'react-use';
 
 import { PluginExtension } from '@grafana/data';
-import { GetPluginExtensionsOptions, UsePluginExtensionsResult } from '@grafana/runtime';
+import { AppPluginConfig, GetPluginExtensionsOptions, UsePluginExtensionsResult, config } from '@grafana/runtime';
 
 import { getPluginExtensions } from './getPluginExtensions';
 import { ReactivePluginExtensionsRegistry } from './reactivePluginExtensionRegistry';
+import { preloadPlugins } from '../pluginPreloader';
 
 export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExtensionsRegistry) {
   const observableRegistry = extensionsRegistry.asObservable();
+  const preloadedAppPlugins: Record<string, boolean> = {};
+  const preloadedExtensionPoints: Record<string, boolean> = {};
   const cache: {
     id: string;
     extensions: Record<string, { context: GetPluginExtensionsOptions['context']; extensions: PluginExtension[] }>;
@@ -16,8 +19,38 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     extensions: {},
   };
 
+  async function preloadAppPluginsForExtensionPoint(extensionPointId: string) {
+    const appPlugins = getAppPluginIdsForExtensionPoint(extensionPointId);
+    const appPluginsToPreload = appPlugins.filter((app) => !preloadedAppPlugins[app.id]);
+
+    await preloadPlugins(appPluginsToPreload, extensionsRegistry);
+    markAppPluginsAsPreloaded(appPluginsToPreload);
+    markExtensionPointAsPreloaded(extensionPointId);
+  }
+
+  function getAppPluginIdsForExtensionPoint(extensionPointId: string) {
+    return Object.values(config.apps).filter((app) =>
+      app.extensions?.some((extension) => extension.extensionPointId === extensionPointId)
+    );
+  }
+
+  function markExtensionPointAsPreloaded(extensionPointId: string) {
+    preloadedExtensionPoints[extensionPointId] = true;
+  }
+
+  function markAppPluginsAsPreloaded(apps: AppPluginConfig[]) {
+    apps.forEach((app) => {
+      preloadedAppPlugins[app.id] = true;
+    });
+  }
+
   return function usePluginExtensions(options: GetPluginExtensionsOptions): UsePluginExtensionsResult<PluginExtension> {
+    preloadAppPluginsForExtensionPoint(options.extensionPointId);
+
     const registry = useObservable(observableRegistry);
+    const isLoading = !preloadedExtensionPoints[options.extensionPointId];
+
+    console.log('REGISTRY UPDATE', { registry, isLoading });
 
     if (!registry) {
       return { extensions: [], isLoading: false };
@@ -33,13 +66,15 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     // (NOTE: we are only checking referential equality of `context` object, so it is important to not mutate the object passed to this hook.)
     const key = `${options.extensionPointId}-${options.limitPerPlugin}`;
     if (cache.extensions[key] && cache.extensions[key].context === options.context) {
+      console.log('FROM CACHE');
       return {
         extensions: cache.extensions[key].extensions,
-        isLoading: false,
+        isLoading,
       };
     }
 
     const { extensions } = getPluginExtensions({ ...options, registry });
+    console.log('NOT FROM CACHE', { extensions });
 
     cache.extensions[key] = {
       context: options.context,
@@ -48,7 +83,7 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
 
     return {
       extensions,
-      isLoading: false,
+      isLoading,
     };
   };
 }

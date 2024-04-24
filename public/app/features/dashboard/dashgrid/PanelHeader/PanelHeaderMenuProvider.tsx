@@ -35,6 +35,8 @@ export function PanelHeaderMenuProvider({ panel, dashboard, loadingState, childr
     limitPerPlugin: 3,
   });
 
+  console.log('EXTENSIONS', extensions);
+
   useEffect(() => {
     setItems(getPanelMenu(dashboard, panel, extensions, angularComponent));
   }, [dashboard, panel, angularComponent, loadingState, setItems, extensions]);
