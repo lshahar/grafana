@@ -9,7 +9,7 @@ import { preloadPlugins } from '../pluginPreloader';
 
 export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExtensionsRegistry) {
   const observableRegistry = extensionsRegistry.asObservable();
-  const preloadedAppPlugins: Record<string, boolean> = {};
+  const preloadedAppPlugins: Record<string, 'loading' | 'loaded'> = {};
   const preloadedExtensionPoints: Record<string, boolean> = {};
   const cache: {
     id: string;
@@ -23,6 +23,7 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     const appPlugins = getAppPluginIdsForExtensionPoint(extensionPointId);
     const appPluginsToPreload = appPlugins.filter((app) => !preloadedAppPlugins[app.id]);
 
+    markAppPluginsAsPreloading(appPluginsToPreload);
     await preloadPlugins(appPluginsToPreload, extensionsRegistry);
     markAppPluginsAsPreloaded(appPluginsToPreload);
     markExtensionPointAsPreloaded(extensionPointId);
@@ -38,19 +39,27 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     preloadedExtensionPoints[extensionPointId] = true;
   }
 
+  function markAppPluginsAsPreloading(apps: AppPluginConfig[]) {
+    apps.forEach((app) => {
+      preloadedAppPlugins[app.id] = 'loading';
+    });
+  }
+
   function markAppPluginsAsPreloaded(apps: AppPluginConfig[]) {
     apps.forEach((app) => {
-      preloadedAppPlugins[app.id] = true;
+      preloadedAppPlugins[app.id] = 'loaded';
     });
   }
 
   return function usePluginExtensions(options: GetPluginExtensionsOptions): UsePluginExtensionsResult<PluginExtension> {
     preloadAppPluginsForExtensionPoint(options.extensionPointId);
 
+    // if (options.extensionPointId === 'grafana/dashboard/panel/menu') {
+    //   debugger;
+    // }
+
     const registry = useObservable(observableRegistry);
     const isLoading = !preloadedExtensionPoints[options.extensionPointId];
-
-    console.log('REGISTRY UPDATE', { registry, isLoading });
 
     if (!registry) {
       return { extensions: [], isLoading: false };
@@ -66,7 +75,6 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     // (NOTE: we are only checking referential equality of `context` object, so it is important to not mutate the object passed to this hook.)
     const key = `${options.extensionPointId}-${options.limitPerPlugin}`;
     if (cache.extensions[key] && cache.extensions[key].context === options.context) {
-      console.log('FROM CACHE');
       return {
         extensions: cache.extensions[key].extensions,
         isLoading,
@@ -74,7 +82,6 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     }
 
     const { extensions } = getPluginExtensions({ ...options, registry });
-    console.log('NOT FROM CACHE', { extensions });
 
     cache.extensions[key] = {
       context: options.context,
