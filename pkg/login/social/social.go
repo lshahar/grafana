@@ -78,7 +78,7 @@ type OAuthInfo struct {
 	SkipOrgRoleSync         bool              `mapstructure:"skip_org_role_sync" toml:"skip_org_role_sync"`
 	TeamIdsAttributePath    string            `mapstructure:"team_ids_attribute_path" toml:"team_ids_attribute_path"`
 	TeamsUrl                string            `mapstructure:"teams_url" toml:"teams_url"`
-	organizationsUrl        string            `mapstructure:"organizationsUrl" toml:"organizationsUrl"`
+	OrganizationsUrl        string            `mapstructure:"organizationsUrl" toml:"organizationsUrl"`
 	TlsClientCa             string            `mapstructure:"tls_client_ca" toml:"tls_client_ca"`
 	TlsClientCert           string            `mapstructure:"tls_client_cert" toml:"tls_client_cert"`
 	TlsClientKey            string            `mapstructure:"tls_client_key" toml:"tls_client_key"`
