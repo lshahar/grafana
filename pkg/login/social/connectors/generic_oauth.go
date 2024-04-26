@@ -36,6 +36,7 @@ var _ ssosettings.Reloadable = (*SocialGenericOAuth)(nil)
 type SocialGenericOAuth struct {
 	*SocialBase
 	allowedOrganizations []string
+	organizationsUrl     string
 	teamsUrl             string
 	emailAttributeName   string
 	emailAttributePath   string
@@ -51,6 +52,7 @@ func NewGenericOAuthProvider(info *social.OAuthInfo, cfg *setting.Cfg, ssoSettin
 	provider := &SocialGenericOAuth{
 		SocialBase:           newSocialBase(social.GenericOAuthProviderName, info, features, cfg),
 		teamsUrl:             info.TeamsUrl,
+		organizationsUrl:     info.organizationsUrl,
 		emailAttributeName:   info.EmailAttributeName,
 		emailAttributePath:   info.EmailAttributePath,
 		nameAttributePath:    info.Extra[nameAttributePathKey],
@@ -119,6 +121,7 @@ func (s *SocialGenericOAuth) Reload(ctx context.Context, settings ssoModels.SSOS
 	s.SocialBase = newSocialBase(social.GenericOAuthProviderName, newInfo, s.features, s.cfg)
 
 	s.teamsUrl = newInfo.TeamsUrl
+	s.organizationsUrl = newInfo.organizationsUrl
 	s.emailAttributeName = newInfo.EmailAttributeName
 	s.emailAttributePath = newInfo.EmailAttributePath
 	s.nameAttributePath = newInfo.Extra[nameAttributePathKey]
@@ -578,12 +581,16 @@ func (s *SocialGenericOAuth) FetchOrganizations(ctx context.Context, client *htt
 	type Record struct {
 		Login string `json:"login"`
 	}
-
 	info := s.GetOAuthInfo()
+	if info.organizationsUrl == "" {
+		organizationsUrl = info.ApiUrl + "/orgs"
+	} else {
+		organizationsUrl = info.organizationsUrl
+	}
 
-	response, err := s.httpGet(ctx, client, fmt.Sprintf(info.ApiUrl+"/orgs"))
+	response, err := s.httpGet(ctx, client, fmt.Sprintf(organizationsUrl))
 	if err != nil {
-		s.log.Error("Error getting organizations", "url", info.ApiUrl+"/orgs", "error", err)
+		s.log.Error("Error getting organizations", "url", organizationsUrl, "error", err)
 		return nil, false
 	}
 
