@@ -29,17 +29,15 @@ export function PanelHeaderMenuProvider({ panel, dashboard, loadingState, childr
   const [items, setItems] = useState<PanelMenuItem[]>([]);
   const angularComponent = useSelector((state) => getPanelStateForModel(state, panel)?.angularComponent);
   const context = useMemo(() => createExtensionContext(panel, dashboard), [panel, dashboard]);
-  const { extensions } = usePluginLinkExtensions({
+  const { extensions, isLoading: isLoadingExtensions } = usePluginLinkExtensions({
     extensionPointId: PluginExtensionPoints.DashboardPanelMenu,
     context,
     limitPerPlugin: 3,
   });
 
-  console.log('EXTENSIONS', extensions);
-
   useEffect(() => {
-    setItems(getPanelMenu(dashboard, panel, extensions, angularComponent));
-  }, [dashboard, panel, angularComponent, loadingState, setItems, extensions]);
+    setItems(getPanelMenu(dashboard, panel, extensions, angularComponent, isLoadingExtensions));
+  }, [dashboard, panel, angularComponent, loadingState, setItems, extensions, isLoadingExtensions]);
 
   return children({ items });
 }

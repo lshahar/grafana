@@ -3,9 +3,10 @@ import { useObservable } from 'react-use';
 import { PluginExtension } from '@grafana/data';
 import { AppPluginConfig, GetPluginExtensionsOptions, UsePluginExtensionsResult, config } from '@grafana/runtime';
 
+import { preloadPlugins } from '../pluginPreloader';
+
 import { getPluginExtensions } from './getPluginExtensions';
 import { ReactivePluginExtensionsRegistry } from './reactivePluginExtensionRegistry';
-import { preloadPlugins } from '../pluginPreloader';
 
 export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExtensionsRegistry) {
   const observableRegistry = extensionsRegistry.asObservable();
@@ -19,11 +20,20 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
     extensions: {},
   };
 
+  async function TEST_REMOVE_BEFORE_MERGE_sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   async function preloadAppPluginsForExtensionPoint(extensionPointId: string) {
     const appPlugins = getAppPluginIdsForExtensionPoint(extensionPointId);
     const appPluginsToPreload = appPlugins.filter((app) => !preloadedAppPlugins[app.id]);
 
+    if (!appPluginsToPreload.length) {
+      return;
+    }
+
     markAppPluginsAsPreloading(appPluginsToPreload);
+    await TEST_REMOVE_BEFORE_MERGE_sleep(0);
     await preloadPlugins(appPluginsToPreload, extensionsRegistry);
     markAppPluginsAsPreloaded(appPluginsToPreload);
     markExtensionPointAsPreloaded(extensionPointId);
@@ -53,10 +63,6 @@ export function createPluginExtensionsHook(extensionsRegistry: ReactivePluginExt
 
   return function usePluginExtensions(options: GetPluginExtensionsOptions): UsePluginExtensionsResult<PluginExtension> {
     preloadAppPluginsForExtensionPoint(options.extensionPointId);
-
-    // if (options.extensionPointId === 'grafana/dashboard/panel/menu') {
-    //   debugger;
-    // }
 
     const registry = useObservable(observableRegistry);
     const isLoading = !preloadedExtensionPoints[options.extensionPointId];

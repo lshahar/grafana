@@ -36,7 +36,8 @@ export function getPanelMenu(
   dashboard: DashboardModel,
   panel: PanelModel,
   extensions: PluginExtensionLink[],
-  angularComponent?: AngularComponent | null
+  angularComponent?: AngularComponent | null,
+  isLoadingExtensions?: boolean
 ): PanelMenuItem[] {
   const onViewPanel = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -322,7 +323,19 @@ export function getPanelMenu(
     });
   }
 
-  if (extensions.length > 0 && !panel.isEditing) {
+  if (isLoadingExtensions) {
+    menu.push({
+      text: 'Extensions',
+      iconClassName: 'plug',
+      type: 'submenu',
+      subMenu: [
+        {
+          text: 'Loading...',
+          iconClassName: 'spinner',
+        },
+      ],
+    });
+  } else if (extensions.length > 0 && !panel.isEditing) {
     menu.push({
       text: 'Extensions',
       iconClassName: 'plug',
